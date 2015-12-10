@@ -8,8 +8,8 @@ function makeOperationByAttribute(operation, candidatesStratgey){
     var arr2 = arguments[2];
     var rest = Array.prototype.slice.call(arguments, 3);
 
-    var attributeValuesOfOperation = operation(_(arr1).pluck(attribute),
-                                              _(arr2).pluck(attribute));
+    var attributeValuesOfOperation = _.uniq(operation(_(arr1).pluck(attribute),
+                                                      _(arr2).pluck(attribute)));
     var candidates = candidatesStratgey(arr1, arr2);
 
     var getFirstObjectWithAttributeValue = (attributeValue) => _(candidates).find( (candidate)=> attributeValue === candidate[attribute] );
